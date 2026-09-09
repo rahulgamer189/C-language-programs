@@ -3,9 +3,9 @@
 int main() 
 { 
  char op; float num1, num2, result;
- printf("Enter an operator (+, -, *, /): ");
+ printf("A satkele add sub multi ya div dal (+, -, *, /): ");
  scanf(" %c", &op);
- printf("Enter two operands: ");
+ printf("Chal do number daal (ek do) <-aise : ");
  scanf("%f %f", &num1, &num2);
  switch(op)
  {
@@ -22,7 +22,7 @@ int main()
          result = num1 / num2;
          break;
      default:
-         printf("Error! Operator is not correct.\n");
+         printf("Galat hai mamuuu\n");
          return 1;
  }
  printf("Result: %.2f %c %.2f = %.2f\n", num1, op, num2, result);
