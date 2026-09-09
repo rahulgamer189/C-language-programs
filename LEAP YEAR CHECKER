@@ -1,0 +1,32 @@
+/*"Code","Explanation"
+"Leap Year Checker","This C program takes a year as input and checks whether it is a leap year. It first checks if the year is divisible by 4. If it is divisible by 100, it must also be divisible by 400 to be a leap year. Finally, it displays whether the entered year is a leap year or not."*/ 
+#include <stdio.h>
+int main()
+{
+    int year; 
+    printf("idhar year daal(all your year over here):");
+    scanf("%d", &year);
+    if (year % 4 == 0)
+    {
+        if (year % 100 == 0)
+        {
+            if (year % 400 == 0)
+            {
+                printf("%d is a leap year.\n", year);
+            }
+            else
+            {
+                printf("%d is not a leap year.\n", year);
+            }
+        }
+        else
+        {
+            printf("%d is a leap year.\n", year);
+        }
+    }
+    else
+    {
+        printf("%d is not a leap year.\n", year);
+    }
+    
+}
