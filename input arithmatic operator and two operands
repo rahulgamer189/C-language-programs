@@ -1,0 +1,30 @@
+/*write a program to input arithmatic operator and two operands, Calculate and display the result as per the given operator using switch case*/
+#include <stdio.h>
+int main() 
+{ 
+ char op; float num1, num2, result;
+ printf("Enter an operator (+, -, *, /): ");
+ scanf(" %c", &op);
+ printf("Enter two operands: ");
+ scanf("%f %f", &num1, &num2);
+ switch(op)
+ {
+     case '+':
+         result = num1 + num2;
+         break;
+     case '-':
+         result = num1 - num2;
+         break;
+     case '*':
+         result = num1 * num2;
+         break;
+     case '/':
+         result = num1 / num2;
+         break;
+     default:
+         printf("Error! Operator is not correct.\n");
+         return 1;
+ }
+ printf("Result: %.2f %c %.2f = %.2f\n", num1, op, num2, result);
+ return 0;
+}
