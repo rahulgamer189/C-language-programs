@@ -1,0 +1,11 @@
+/*****Looping statement simple code repeating*****/
+#include <stdio.h>
+int main() 
+{ 
+    int yaaaa;
+    for(yaaaa=1; yaaaa<=59; yaaaa++) //here the code will write 59 times kya BEEEEE mar dungaaa// 
+    {
+        printf("Kya BEEEEE maar dungaaa %d\n", yaaaa);
+    }
+    return 0;
+}
