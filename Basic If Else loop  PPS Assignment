@@ -1,0 +1,24 @@
+//In a software company a project team of 3 members namely manvi, shyam and William. Input//
+//their job experience in no. of years. The team lead must have more experience. Display who can//
+//be team lead. (use if..else)//
+#include <stdio.h>
+
+int main() {
+    int manvi, shyam, william;
+    printf("Enter the job experience of Manvi (in years): ");
+    scanf("%d", &manvi);
+    printf("Enter the job experience of Shyam (in years): ");
+    scanf("%d", &shyam);
+    printf("Enter the job experience of William (in years): ");
+    scanf("%d", &william);
+
+    if (manvi > shyam && manvi > william) {
+        printf("Manvi can be the team lead.\n");
+    } else if (shyam > manvi && shyam > william) {
+        printf("Shyam can be the team lead.\n");
+    } else {
+        printf("William can be the team lead.\n");
+    }
+
+    return 0;
+}
