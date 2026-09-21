@@ -1,0 +1,24 @@
+// John, Ram and shah were fishing in a river bank. Input the no. of fishes caught by each//
+//person and display who have caught more fishes (use conditional operator).//
+#include <stdio.h>
+int main()
+{
+    int john, ram, shah;
+    printf("Enter the number of fishes caught by John: ");
+    scanf("%d", &john);
+    printf("Enter the number of fishes caught by Ram: ");
+    scanf("%d", &ram);
+    printf("Enter the number of fishes caught by Shah: ");
+    scanf("%d", &shah);
+
+    int max_fishes = (john > ram) ? ((john > shah) ? john : shah) : ((ram > shah) ? ram : shah);
+
+    if (max_fishes == john)
+        printf("John caught the most fishes: %d\n", john);
+    else if (max_fishes == ram)
+        printf("Ram caught the most fishes: %d\n", ram);
+    else
+        printf("Shah caught the most fishes: %d\n", shah);
+
+    return 0;
+}
