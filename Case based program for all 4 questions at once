@@ -1,0 +1,140 @@
+//** WAP to check give string is pallindrome or not **//
+//** WAP to count number of vowels in a given string **//
+//** WAP to convert uppercase lettert to lowercase and vice versa in a given string **//
+//** WAP to count total number of alphabets, digits and symbols in a given string **//
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+void checkPalindrome(const char *str) 
+{
+    int left = 0;
+    int right = strlen(str) - 1;
+    int isPalindrome = 1;
+
+    while (left < right) {
+        if (str[left] != str[right]) 
+        {
+            isPalindrome = 0;
+            break;
+        }
+        left++;
+        right--;
+    }
+
+    if (isPalindrome) 
+    {
+        printf("Result: \"%s\" is a palindrome.\n", str);
+    } else 
+    {
+        printf("Result: \"%s\" is not a palindrome.\n", str);
+    }
+}
+
+void countVowels(const char *str) 
+{
+    int count = 0;
+    for (int i = 0; str[i] != '\0'; i++) 
+    {
+        char ch = tolower((unsigned char)str[i]);
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') 
+        {
+            count++;
+        }
+    }
+    printf("Result: Total vowels = %d\n", count);
+}
+
+void toggleCase(char *str) 
+{
+    for (int i = 0; str[i] != '\0'; i++) 
+    {
+        if (isupper((unsigned char)str[i])) 
+        {
+            str[i] = tolower((unsigned char)str[i]);
+        } else if (islower((unsigned char)str[i])) 
+        {
+            str[i] = toupper((unsigned char)str[i]);
+        }
+    }
+    printf("Result: Toggled string = %s\n", str);
+}
+
+void countCharacters(const char *str) 
+{
+    int alphabets = 0, digits = 0, symbols = 0;
+
+    for (int i = 0; str[i] != '\0'; i++) 
+    {
+        if (isalpha((unsigned char)str[i])) 
+        {
+            alphabets++;
+        } else if (isdigit((unsigned char)str[i])) 
+        {
+            digits++;
+        } else if (!isspace((unsigned char)str[i])) 
+        {
+            symbols++;
+        }
+    }
+
+    printf("Result:\n");
+    printf("  Alphabets: %d\n", alphabets);
+    printf("  Digits   : %d\n", digits);
+    printf("  Symbols  : %d\n", symbols);
+}
+
+int main() 
+{
+    char str[200];
+    char temp[200];
+    int choice;
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str, "\n")] = '\0'; 
+
+    do {
+        printf("\n--- String Operations Menu ---\n");
+        printf("1. Check Palindrome\n");
+        printf("2. Count Vowels\n");
+        printf("3. Toggle Case\n");
+        printf("4. Count Alphabets, Digits, and Symbols\n");
+        printf("5. Enter New String\n");
+        printf("6. Exit\n");
+        printf("Choose an option (1-6): ");
+        if (scanf("%d", &choice) != 1) 
+        {
+            break;
+        }
+        while (getchar() != '\n'); 
+
+        switch (choice) 
+        {
+            case 1:
+                checkPalindrome(str);
+                break;
+            case 2:
+                countVowels(str);
+                break;
+            case 3:
+                strcpy(temp, str); 
+                toggleCase(temp);
+                break;
+            case 4:
+                countCharacters(str);
+                break;
+            case 5:
+                printf("Enter a new string: ");
+                fgets(str, sizeof(str), stdin);
+                str[strcspn(str, "\n")] = '\0';
+                break;
+            case 6:
+                printf("Exiting program.\n");
+                break;
+            default:
+                printf("Invalid choice. Please select 1-6.\n");
+        }
+    } while (choice != 6);
+
+    return 0;
+}
