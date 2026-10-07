@@ -1,0 +1,407 @@
+//** SO IN THIS AI I AM GOONNA IMPLEMENT ALL THE STRING PROGRAMS AND ARRAY PROGRAMS THAT I HAVE LERNT DURING PPS CLASS **// 
+//**............................PROGRAMS............................**//
+//** WAP to count the number of strings **//
+//** WAP to check whether the given string is palindrome or not without using built in functions **//
+//** WAP to count the number of vowels in a given string without using built in functions **//
+//** WAP to convert uppercase letters to lowercase and vice versa in a given string without using built in functions **//
+//** WAP to count the total number of alphabets, digits and symbols in a given string without using built in functions **//
+//** WAP to count the number of strings without using built in functions **//
+//** WAP to reverse a given string without using built in functions **//
+//** WAP to find a reverse of the given string without built in function without using built in functions **//
+//** WAP to find the length of the given string without using built in function without using built in functions **//
+//** WAP to copy a string into another string without using built in function without using built in functions **//
+//** WAP to concatenate two strings without using built in function without using built in functions **//
+//** WAP to find the largest string among the given strings without using built in functions **//
+//** WAP to find the smallest string among the given strings without using built in functions **//
+//** WAP to compare two strings without using built in function **//
+//** WAP to find the sub string of the given string **//
+//** WAP to find the occurrence of a substring in the given string **//
+//** WAP to find all the subsets of the given string **//
+
+#include <stdio.h>
+
+void readLine(char str[], int size) 
+{
+    int i = 0;
+    char ch;
+    while ((ch = getchar()) == '\n' || ch == EOF);
+    if (ch != EOF) 
+    {
+        str[i++] = ch;
+    }
+    while (i < size - 1 && (ch = getchar()) != '\n' && ch != EOF) 
+    {
+        str[i++] = ch;
+    }
+    str[i] = '\0';
+}
+
+// 1. Length of a string
+int strLength(char str[]) 
+{
+    int len = 0;
+    while (str[len] != '\0') 
+    {
+        len++;
+    }
+    return len;
+}
+
+// 2. Copy string
+void strCopy(char dest[], char src[]) 
+{
+    int i = 0;
+    while (src[i] != '\0') 
+    {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+}
+
+// 3. Concatenate strings
+void strConcat(char dest[], char src[]) 
+{
+    int i = 0, j = 0;
+    while (dest[i] != '\0') i++;
+    while (src[j] != '\0') 
+    {
+        dest[i] = src[j];
+        i++;
+        j++;
+    }
+    dest[i] = '\0';
+}
+
+// 4. Reverse string
+void strReverse(char str[]) 
+{
+    int len = strLength(str);
+    for (int i = 0; i < len / 2; i++) 
+    {
+        char temp = str[i];
+        str[i] = str[len - 1 - i];
+        str[len - 1 - i] = temp;
+    }
+}
+
+// 5. Palindrome check
+int isPalindrome(char str[]) 
+{
+    int len = strLength(str);
+    for (int i = 0; i < len / 2; i++) 
+    {
+        if (str[i] != str[len - 1 - i]) return 0;
+    }
+    return 1;
+}
+
+// 6. Count vowels
+int countVowels(char str[]) 
+{
+    int count = 0;
+    for (int i = 0; str[i] != '\0'; i++) 
+    {
+        char ch = str[i];
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||
+            ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U') 
+            
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+// 7. Toggle case (Upper to lower and vice versa)
+void toggleCase(char str[]) 
+{
+    for (int i = 0; str[i] != '\0'; i++) 
+    {
+        if (str[i] >= 'A' && str[i] <= 'Z') 
+        {
+            str[i] += 32;
+        } else if (str[i] >= 'a' && str[i] <= 'z') 
+        {
+            str[i] -= 32;
+        }
+    }
+}
+
+// 8. Count alphabets, digits, and symbols
+void countCharacters(char str[], int *alpha, int *digit, int *symbol) 
+{
+    *alpha = *digit = *symbol = 0;
+    for (int i = 0; str[i] != '\0'; i++) 
+    {
+        if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')) 
+        {
+            (*alpha)++;
+        } else if (str[i] >= '0' && str[i] <= '9') 
+        {
+            (*digit)++;
+        } else if (str[i] != ' ' && str[i] != '\t') 
+        {
+            (*symbol)++;
+        }
+    }
+}
+
+// 9. Count words in a sentence
+int countWords(char str[]) 
+{
+    int count = 0, inWord = 0;
+    for (int i = 0; str[i] != '\0'; i++) 
+    {
+        if (str[i] != ' ' && str[i] != '\t') 
+        {
+            if (!inWord) 
+            {
+                count++;
+                inWord = 1;
+            }
+        } else 
+        {
+            inWord = 0;
+        }
+    }
+    return count;
+}
+
+// 10. Compare two strings
+int strCompare(char s1[], char s2[]) 
+{
+    int i = 0;
+    while (s1[i] != '\0' && s2[i] != '\0') 
+    {
+        if (s1[i] != s2[i]) return s1[i] - s2[i];
+        i++;
+    }
+    return s1[i] - s2[i];
+}
+
+// 11. Extract substring
+void extractSubstring(char str[], int start, int len, char sub[]) 
+{
+    int i = 0;
+    while (i < len && str[start + i] != '\0') 
+    {
+        sub[i] = str[start + i];
+        i++;
+    }
+    sub[i] = '\0';
+}
+
+// 12. Find occurrence of substring
+int findSubstring(char str[], char sub[], int *firstIndex) 
+{
+    int count = 0;
+    *firstIndex = -1;
+    for (int i = 0; str[i] != '\0'; i++) 
+    {
+        int j = 0;
+        while (sub[j] != '\0' && str[i + j] == sub[j]) 
+        {
+            j++;
+        }
+        if (sub[j] == '\0') 
+        {
+            if (*firstIndex == -1) *firstIndex = i;
+            count++;
+        }
+    }
+    return count;
+}
+
+// 13. Print all subsets/substrings
+void printAllSubsets(char str[]) 
+{
+    int len = strLength(str);
+    for (int i = 0; i < len; i++) 
+    {
+        for (int j = i; j < len; j++) 
+        {
+            for (int k = i; k <= j; k++) 
+            {
+                printf("%c", str[k]);
+            }
+            printf("\n");
+        }
+    }
+}
+
+int main() 
+{
+    int choice;
+    char str1[200], str2[200], result[400];
+
+    do {
+        printf("\n================ PPS STRING OPERATIONS MENU ================\n");
+        printf("1.  Find Length of a String\n");
+        printf("2.  Copy String into Another String\n");
+        printf("3.  Concatenate Two Strings\n");
+        printf("4.  Reverse a String\n");
+        printf("5.  Check Palindrome\n");
+        printf("6.  Count Vowels\n");
+        printf("7.  Convert Uppercase to Lowercase & Vice Versa\n");
+        printf("8.  Count Alphabets, Digits, and Symbols\n");
+        printf("9.  Count Words in a Sentence\n");
+        printf("10. Compare Two Strings\n");
+        printf("11. Find Largest & Smallest String among N Strings\n");
+        printf("12. Extract Substring\n");
+        printf("13. Search Substring & Count Occurrences\n");
+        printf("14. Print All Subsets (Contiguous Substrings)\n");
+        printf("0.  Exit\n");
+        printf("============================================================\n");
+        printf("Enter your choice: ");
+        if (scanf("%d", &choice) != 1) break;
+
+        switch (choice) {
+            case 1:
+                printf("Enter string: ");
+                readLine(str1, sizeof(str1));
+                printf("Length: %d\n", strLength(str1));
+                break;
+
+            case 2:
+                printf("Enter source string: ");
+                readLine(str1, sizeof(str1));
+                strCopy(result, str1);
+                printf("Copied destination string: %s\n", result);
+                break;
+
+            case 3:
+                printf("Enter first string: ");
+                readLine(str1, sizeof(str1));
+                printf("Enter second string: ");
+                readLine(str2, sizeof(str2));
+                strCopy(result, str1);
+                strConcat(result, str2);
+                printf("Concatenated string: %s\n", result);
+                break;
+
+            case 4:
+                printf("Enter string: ");
+                readLine(str1, sizeof(str1));
+                strReverse(str1);
+                printf("Reversed string: %s\n", str1);
+                break;
+
+            case 5:
+                printf("Enter string: ");
+                readLine(str1, sizeof(str1));
+                if (isPalindrome(str1)) printf("Result: IS a Palindrome.\n");
+                else printf("Result: Is *NOT a Palindrome.\n");
+                break;
+
+            case 6:
+                printf("Enter string: ");
+                readLine(str1, sizeof(str1));
+                printf("Total vowels: %d\n", countVowels(str1));
+                break;
+
+            case 7:
+                printf("Enter string: ");
+                readLine(str1, sizeof(str1));
+                toggleCase(str1);
+                printf("Converted string: %s\n", str1);
+                break;
+
+            case 8: 
+            {
+                int a, d, s;
+                printf("Enter string: ");
+                readLine(str1, sizeof(str1));
+                countCharacters(str1, &a, &d, &s);
+                printf("Alphabets: %d | Digits: %d | Symbols: %d\n", a, d, s);
+                break;
+            }
+
+            case 9:
+                printf("Enter sentence: ");
+                readLine(str1, sizeof(str1));
+                printf("Total words: %d\n", countWords(str1));
+                break;
+
+            case 10: {
+                printf("Enter first string: ");
+                readLine(str1, sizeof(str1));
+                printf("Enter second string: ");
+                readLine(str2, sizeof(str2));
+                int diff = strCompare(str1, str2);
+                if (diff == 0) printf("Both strings are equal.\n");
+                else if (diff > 0) printf("String 1 is lexicographically greater than String 2.\n");
+                else printf("String 1 is lexicographically smaller than String 2.\n");
+                break;
+            }
+
+            case 11: 
+            {
+                int n;
+                char list[20][100];
+                printf("Enter number of strings: ");
+                scanf("%d", &n);
+                for (int i = 0; i < n; i++) 
+                {
+                    printf("String %d: ", i + 1);
+                    readLine(list[i], sizeof(list[i]));
+                }
+                int minIdx = 0, maxIdx = 0;
+                for (int i = 1; i < n; i++) 
+                {
+                    if (strCompare(list[i], list[maxIdx]) > 0) maxIdx = i;
+                    if (strCompare(list[i], list[minIdx]) < 0) minIdx = i;
+                }
+                printf("Smallest: %s\n", list[minIdx]);
+                printf("Largest: %s\n", list[maxIdx]);
+                break;
+            }
+
+            case 12: 
+            {
+                int start, len;
+                printf("Enter string: ");
+                readLine(str1, sizeof(str1));
+                printf("Enter starting index (0-based) and length: ");
+                scanf("%d %d", &start, &len);
+                extractSubstring(str1, start, len, result);
+                printf("Extracted Substring: %s\n", result);
+                break;
+            }
+
+            case 13: 
+            {
+                int firstIdx;
+                printf("Enter main string: ");
+                readLine(str1, sizeof(str1));
+                printf("Enter substring to find: ");
+                readLine(str2, sizeof(str2));
+                int occurrences = findSubstring(str1, str2, &firstIdx);
+                if (occurrences > 0) 
+                {
+                    printf("Found! First index: %d | Total occurrences: %d\n", firstIdx, occurrences);
+                } else 
+                {
+                    printf("Substring not found.\n");
+                }
+                break;
+            }
+
+            case 14:
+                printf("Enter string: ");
+                readLine(str1, sizeof(str1));
+                printf("Subsets:\n");
+                printAllSubsets(str1);
+                break;
+
+            case 0:
+                printf("Exiting program.\n");
+                break;
+
+            default:
+                printf("Invalid choice! Please select 0 to 14.\n");
+        }
+    } while (choice != 0);
+
+    return 0;
+}
