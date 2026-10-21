@@ -1,0 +1,36 @@
+// Write a program to find the greatest among three numbers.(using else..if and switch both) //
+#include <stdio.h>
+
+int main() {
+    int num1, num2, num3;
+
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &num1, &num2, &num3);
+
+    if (num1 >= num2 && num1 >= num3) {
+        printf("Greatest number is: %d\n", num1);
+    } else if (num2 >= num1 && num2 >= num3) {
+        printf("Greatest number is: %d\n", num2);
+    } else {
+        printf("Greatest number is: %d\n", num3);
+    }
+
+    int greatest = num1;
+    if (num2 > greatest) {
+        greatest = num2;
+    }
+    if (num3 > greatest) {
+        greatest = num3;
+    }
+
+    switch (greatest) {
+        case 0:
+            printf("Greatest number is: 0\n");
+            break;
+        default:
+            printf("Greatest number is: %d\n", greatest);
+            break;
+    }
+
+    return 0;
+}
