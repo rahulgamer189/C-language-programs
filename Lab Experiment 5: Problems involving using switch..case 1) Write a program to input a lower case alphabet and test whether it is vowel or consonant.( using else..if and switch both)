@@ -1,0 +1,36 @@
+// 1) Write a program to input a lower case alphabet and test whether it is vowel or consonant.( //
+// using else..if and switch both) //
+
+#include <stdio.h>
+
+int main() 
+{
+    char ch;
+    printf("Enter the Lower case letter: ");
+    scanf("%c", &ch);
+
+    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') 
+    {
+        printf("%c is a vowel (using else..if).\n", ch);
+    } 
+    else 
+    {
+        printf("%c is a consonant (using else..if).\n", ch);
+    }
+
+    switch (ch) 
+    {
+        case 'a':
+        case 'e':
+        case 'i':
+        case 'o':
+        case 'u':
+            printf("%c is a vowel (using switch).\n", ch);
+            break;
+        default:
+            printf("%c is a consonant (using switch).\n", ch);
+            break;
+    }
+
+    return 0;
+}
