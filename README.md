@@ -1,5 +1,13 @@
-# C-language-programs
-PPS (T&amp;P): all the programs i wrote in my C language teaching class under 5 minutes 
+# C Language Programs (PPS – T&P)
 
-Created By :- Rahul Thakur
-Mentor Name:- Santosh Kumar SIR (PPS, T&P)
+Collection of C programs written during Programming for Problem Solving (PPS) classes under 5 minutes each.
+
+**Mentor:** Santosh Kumar Sir
+
+## Contents
+- Basic programs (loops, conditionals, arrays, strings)
+- Assignment solutions
+- Quick practice codes
+
+## Author
+Rahul Thakur
