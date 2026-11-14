@@ -1,0 +1,27 @@
+//** This program is a standard educational example demonstrating Dynamic Memory Allocation (DMA) in C. **//
+#include <stdio.h>
+#include <stdlib.h>
+int main ()
+{
+    int n,i,sum=0;
+    printf("Enter the value of n: ");
+    scanf("%d",&n);
+    int *ptr = (int*)malloc(n= sizeof(int));
+    //int *ptr = (int*)calloc(n, sizeof(int));
+    for(i=0; i<n; i++)
+    {
+        printf("Enter data :");
+        scanf("%d",ptr+i);
+        sum += *(ptr+i);
+    }
+    realloc(ptr, (n+2)*sizeof(int)); 
+    for (i=n; i<n+2; i++)
+    {
+        printf("Enter data :");
+        scanf("%d",ptr+i);
+        sum += *(ptr+i);
+    }
+    free(ptr);
+    printf("Sum = %d",sum);
+    return 0;   
+}
